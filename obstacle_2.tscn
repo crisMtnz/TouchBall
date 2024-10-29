@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://ceki2vvc2rq7y"]
+
+[ext_resource type="Script" path="res://obstacle_1.gd" id="1_0ltx2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pel52"]
+size = Vector2(740, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1snlb"]
+size = Vector2(260, 40)
+
+[node name="obstacle2" type="Node2D"]
+scale = Vector2(1, 3)
+script = ExtResource("1_0ltx2")
+
+[node name="DEATH" type="Area2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DEATH"]
+position = Vector2(370, 20)
+shape = SubResource("RectangleShape2D_pel52")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DEATH"]
+position = Vector2(-630, 20)
+shape = SubResource("RectangleShape2D_pel52")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 740.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = -1000.0
+offset_right = -260.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="SCORE" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SCORE"]
+position = Vector2(-130, 20)
+shape = SubResource("RectangleShape2D_1snlb")
+metadata/_edit_lock_ = true
+
+[connection signal="body_entered" from="DEATH" to="." method="_on_death_body_entered"]
+[connection signal="body_entered" from="SCORE" to="." method="_on_score_body_entered"]

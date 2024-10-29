@@ -1,0 +1,76 @@
+[gd_scene load_steps=4 format=3 uid="uid://47ma1yfdac18"]
+
+[ext_resource type="FontFile" uid="uid://b12wpoffga00w" path="res://Overpass-Bold.otf" id="1_gifem"]
+[ext_resource type="Script" path="res://menu.gd" id="1_v74we"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dd5p2"]
+
+[node name="Menu" type="Node2D"]
+script = ExtResource("1_v74we")
+
+[node name="bg" type="ColorRect" parent="."]
+offset_left = -72.0
+offset_top = -48.0
+offset_right = 864.0
+offset_bottom = 1624.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="Lvl1" type="ColorRect" parent="."]
+offset_left = 72.0
+offset_top = 72.0
+offset_right = 640.0
+offset_bottom = 312.0
+mouse_filter = 2
+color = Color(0, 0.278431, 0.686275, 1)
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="Lvl1"]
+layout_mode = 0
+offset_right = 568.0
+offset_bottom = 240.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("1_gifem")
+theme_override_font_sizes/font_size = 100
+text = "MIX 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Button1" type="TouchScreenButton" parent="Lvl1"]
+position = Vector2(284, 123)
+scale = Vector2(28.5, 12.5)
+shape = SubResource("RectangleShape2D_dd5p2")
+metadata/_edit_lock_ = true
+
+[node name="Lvl2" type="ColorRect" parent="."]
+offset_left = 72.0
+offset_top = 448.0
+offset_right = 640.0
+offset_bottom = 688.0
+mouse_filter = 2
+color = Color(0, 0.278431, 0.686275, 1)
+
+[node name="Label" type="Label" parent="Lvl2"]
+layout_mode = 0
+offset_right = 568.0
+offset_bottom = 240.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("1_gifem")
+theme_override_font_sizes/font_size = 100
+text = "MIX 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Button2" type="TouchScreenButton" parent="Lvl2"]
+position = Vector2(284, 123)
+scale = Vector2(28.5, 12.5)
+shape = SubResource("RectangleShape2D_dd5p2")
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="Lvl1/Button1" to="." method="_on_button_1_pressed"]
+[connection signal="pressed" from="Lvl2/Button2" to="." method="_on_button_2_pressed"]

@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://cot7638abye1a"]
+
+[ext_resource type="Script" path="res://global.gd" id="1_wxe5t"]
+[ext_resource type="AudioStream" uid="uid://cmag4thj0fbyg" path="res://SOUNDS/touch.wav" id="2_75nqe"]
+[ext_resource type="AudioStream" uid="uid://c4sxaxh1tiv51" path="res://SOUNDS/failure.wav" id="3_3blpo"]
+[ext_resource type="AudioStream" uid="uid://c714bqb4hndc1" path="res://SOUNDS/success.wav" id="4_0y2i6"]
+
+[node name="global" type="Node"]
+script = ExtResource("1_wxe5t")
+
+[node name="touch" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_75nqe")
+volume_db = 5.0
+
+[node name="failure" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_3blpo")
+
+[node name="success" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_0y2i6")

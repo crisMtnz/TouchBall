@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=3 uid="uid://c5iu02ora4fta"]
+
+[ext_resource type="Script" path="res://Main.gd" id="1_3b7mt"]
+[ext_resource type="PackedScene" uid="uid://0w701mmybnv3" path="res://ball.tscn" id="2_1wdv7"]
+[ext_resource type="FontFile" uid="uid://b12wpoffga00w" path="res://Overpass-Bold.otf" id="3_rquen"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_gfesk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0nun2"]
+size = Vector2(178, 1553)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_3b7mt")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 719.0
+offset_bottom = 1556.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(717.592, 0)
+scale = Vector2(-716.592, 1565.46)
+texture_normal = SubResource("CanvasTexture_gfesk")
+
+[node name="ball" parent="." instance=ExtResource("2_1wdv7")]
+position = Vector2(360, 1300)
+
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
+offset_right = 512.0
+offset_bottom = 456.0
+color = Color(0.49, 0.074, 0.02, 0.509)
+
+[node name="Edges" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Edges"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Edges/StaticBody2D"]
+position = Vector2(-88, 775.5)
+shape = SubResource("RectangleShape2D_0nun2")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Edges"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Edges/StaticBody2D2"]
+position = Vector2(808, 776)
+shape = SubResource("RectangleShape2D_0nun2")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 696.0
+offset_bottom = 512.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_rquen")
+theme_override_font_sizes/font_size = 40
+text = "POSITION = "
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="SpawnTimer" type="Timer" parent="Timers"]
+wait_time = 1.5
+
+[node name="SpawnTimerWide" type="Timer" parent="Timers"]
+autostart = true
+
+[connection signal="pressed" from="TouchScreenButton" to="." method="_on_touch_screen_button_pressed"]
+[connection signal="timeout" from="Timers/SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="Timers/SpawnTimerWide" to="." method="_on_spawn_timer_wide_timeout"]
